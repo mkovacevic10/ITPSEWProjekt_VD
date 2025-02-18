@@ -1,4 +1,3 @@
-package Hauptmenue;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionListener;
@@ -95,5 +94,8 @@ public class HauptmenueView {
         if (result == JOptionPane.YES_OPTION) {
             frame.dispose();
         }
+    }
+    public void nextProgram() {
+        frame.dispose();
     }
 }

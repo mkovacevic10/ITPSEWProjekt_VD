@@ -1,4 +1,3 @@
-package Hauptmenue;
 public class HauptmenueModel {
     public String getLernkarteiMessage() {
         return "Lernkartei wurde geöffnet.";

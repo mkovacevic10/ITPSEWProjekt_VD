@@ -12,7 +12,7 @@ public class Spiel extends JFrame {
     private String word;
     private char[] guessedWord;
 
-    public Spiel(String wort) {
+    public Spiel(String wort, HauptmenueController contr) {
         this.word = wort.toUpperCase();
         this.guessedWord = new char[word.length()];
         for (int i = 0; i < guessedWord.length; i++) {
@@ -71,11 +71,17 @@ public class Spiel extends JFrame {
         bottomPanel.add(backButton);
         bottomPanel.add(nextWordButton);
         add(bottomPanel);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                contr.getView().nextProgram();
+                HauptmenueController contr1 = new HauptmenueController(contr.getView(),contr.getModel());
+                contr1.getView().setVisible(true);
+
+            }
+        });
 
         setVisible(true);
-    }
-
-    public static void main(String[] args) {
-        new Spiel("TEST");
     }
 }

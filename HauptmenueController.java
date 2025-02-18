@@ -1,13 +1,22 @@
-package Hauptmenue;
 import java.awt.event.*;
 
 public class HauptmenueController {
+    public HauptmenueView getView() {
+        return view;
+    }
+
+    public HauptmenueModel getModel() {
+        return model;
+    }
+
     private HauptmenueView view;
     private HauptmenueModel model;
+    private Spiel spiel;
 
     public HauptmenueController(HauptmenueView view, HauptmenueModel model) {
         this.view = view;
         this.model = model;
+        HauptmenueController contr = this;
 
         // Verbinde die Buttons mit den entsprechenden Aktionen
         this.view.addLernkarteiListener(new ActionListener() {
@@ -28,6 +37,10 @@ public class HauptmenueController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.showMessage(model.getSpielMessage());
+                view.nextProgram();
+                new Spiel("ayri", contr);
+
+
             }
         });
 
