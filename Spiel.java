@@ -75,9 +75,7 @@ public class Spiel extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 dispose();
-                contr.getView().nextProgram();
-                HauptmenueController contr1 = new HauptmenueController(contr.getView(),contr.getModel());
-                contr1.getView().setVisible(true);
+                contr.getView().setVisible(true);
 
             }
         });
