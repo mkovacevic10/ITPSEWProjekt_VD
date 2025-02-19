@@ -17,12 +17,16 @@ public class HauptmenueController {
         this.view = view;
         this.model = model;
         HauptmenueController contr = this;
+        KarteikartenModel modelk = new KarteikartenModel();
+        KarteikartenView viewK = new KarteikartenView();
 
         // Verbinde die Buttons mit den entsprechenden Aktionen
         this.view.addLernkarteiListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.showMessage(model.getLernkarteiMessage());
+                view.nextProgram();
+                new KarteikartenController(modelk,viewK,contr);
             }
         });
 
@@ -59,14 +63,9 @@ public class HauptmenueController {
         });
     }
     public static void main(String[] args) {
-        // Erstelle das Model und die View
         HauptmenueModel model = new HauptmenueModel();
         HauptmenueView view = new HauptmenueView();
-
-        // Erstelle den Controller und übergebe die View und das Model
         new HauptmenueController(view, model);
-
-        // Mache die View sichtbar
         view.setVisible(true);
     }
 }

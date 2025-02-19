@@ -13,52 +13,68 @@ public class HauptmenueView {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(500, 400);
 
-        // Hauptpanel mit BoxLayout auf der Y-Achse
+        // Hauptpanel mit GridLayout (7 Zeilen und 1 Spalte für Buttons)
         mainPanel = new JPanel();
-        mainPanel.setLayout(new BoxLayout(mainPanel, BoxLayout.Y_AXIS));
+        mainPanel.setLayout(new GridLayout(7, 1)); // 7 Zeilen, 1 Spalte für das Hauptlayout
 
         // Titel hinzufügen und zentrieren
         JLabel titleLabel = new JLabel("ITP Lernbegriffe");
         titleLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        titleLabel.setAlignmentX(Component.CENTER_ALIGNMENT);
-        mainPanel.add(Box.createVerticalStrut(20)); // Abstand oben
-        mainPanel.add(titleLabel);
-        mainPanel.add(Box.createVerticalStrut(30)); // Abstand nach dem Titel
+        titleLabel.setHorizontalAlignment(SwingConstants.CENTER);
+        mainPanel.add(titleLabel); // Hinzufügen des Titel-Labels
 
-        // Panel für die drei Buttons nebeneinander zentriert
+        // Füge leere Zelle hinzu, um Abstand nach oben zu erzeugen
+        mainPanel.add(new JLabel(""));  // Leere Zelle als Abstand nach oben
+
+        // Panel für die drei Buttons oben (3 Buttons nebeneinander)
         JPanel buttonPanelTop = new JPanel();
-        buttonPanelTop.setLayout(new FlowLayout(FlowLayout.CENTER, 15, 0));
+        buttonPanelTop.setLayout(new GridLayout(1, 3, 10, 0)); // 1 Zeile, 3 Spalten, horizontaler Abstand = 10
 
         lernkarteiButton = new JButton("Lernkartei");
         quizButton = new JButton("Quiz");
         spielButton = new JButton("Spiel");
 
+        // Alle Buttons auf gleiche Größe setzen
+        setButtonSize(lernkarteiButton);
+        setButtonSize(quizButton);
+        setButtonSize(spielButton);
+
         buttonPanelTop.add(lernkarteiButton);
         buttonPanelTop.add(quizButton);
         buttonPanelTop.add(spielButton);
 
-        // Panel für die unteren Buttons untereinander zentriert
+        mainPanel.add(buttonPanelTop);  // Hinzufügen des Panels für obere Buttons
+
+        // Füge leere Zelle hinzu, um Abstand zwischen den Panels zu erzeugen
+        mainPanel.add(new JLabel(""));  // Leere Zelle als Abstand
+
+        // Panel für die unteren Buttons (2 Buttons untereinander)
         JPanel buttonPanelBottom = new JPanel();
-        buttonPanelBottom.setLayout(new BoxLayout(buttonPanelBottom, BoxLayout.Y_AXIS));
+        buttonPanelBottom.setLayout(new GridLayout(2, 1, 10, 10)); // 2 Zeilen, 1 Spalte, vertikaler Abstand = 10
 
         dateiButton = new JButton("Datei speichern/bearbeiten");
         schließenButton = new JButton("Programm schließen");
 
-        dateiButton.setAlignmentX(Component.CENTER_ALIGNMENT);
-        schließenButton.setAlignmentX(Component.CENTER_ALIGNMENT);
+        // Alle unteren Buttons auf gleiche Größe setzen
+        setButtonSize(dateiButton);
+        setButtonSize(schließenButton);
 
-        buttonPanelBottom.add(Box.createVerticalStrut(20)); // Abstand oben
         buttonPanelBottom.add(dateiButton);
-        buttonPanelBottom.add(Box.createVerticalStrut(10)); // Abstand zwischen den Buttons
         buttonPanelBottom.add(schließenButton);
 
-        // Alle Komponenten dem Hauptpanel hinzufügen
-        mainPanel.add(buttonPanelTop);
-        mainPanel.add(buttonPanelBottom);
+        mainPanel.add(buttonPanelBottom);  // Hinzufügen des Panels für untere Buttons
 
-        // Hauptpanel dem Frame hinzufügen
+        // Füge leere Zelle hinzu, um Abstand unten zu erzeugen
+        mainPanel.add(new JLabel(""));  // Leere Zelle als Abstand nach unten
+
+        // Alle Komponenten dem Hauptpanel hinzufügen
         frame.getContentPane().add(mainPanel);
         frame.setLocationRelativeTo(null); // Fenster zentrieren
+    }
+
+    // Methode, um allen Buttons die gleiche Größe zu geben
+    private void setButtonSize(JButton button) {
+        button.setPreferredSize(new Dimension(150, 40));  // Beispielgröße für alle Buttons
     }
 
     public void setVisible(boolean visible) {
@@ -95,6 +111,7 @@ public class HauptmenueView {
             frame.dispose();
         }
     }
+
     public void nextProgram() {
         frame.dispose();
     }
