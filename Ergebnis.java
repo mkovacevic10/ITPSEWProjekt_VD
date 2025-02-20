@@ -10,7 +10,7 @@ public class Ergebnis extends JFrame {
         setLayout(new GridLayout(3, 1));
         setLocationRelativeTo(null);
 
-        JLabel scoreLabel = new JLabel("Richtig: " + correct + " | Falsch: " + wrong, SwingConstants.CENTER);
+        JLabel scoreLabel = new JLabel("Weiß ich: " + correct + " | Weiß ich nicht: " + wrong, SwingConstants.CENTER);
         add(scoreLabel);
 
         JButton backButton = new JButton("Zurück zum Hauptmenü");
