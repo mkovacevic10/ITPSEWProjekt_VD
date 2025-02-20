@@ -3,18 +3,20 @@ import java.awt.*;
 import java.awt.event.ActionListener;
 
 public class KarteikartenView extends JFrame {
-    private JLabel cardLabel;
+    private JLabel cardLabel, solutionLabel;
     private JButton knowButton, nextButton, dontKnowButton, addButton, exitButton, solutionButton;
 
     public KarteikartenView() {
         setTitle("Karteikarten");
         setSize(600, 500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        setLayout(new GridLayout(2, 1));
+        setLayout(new GridLayout(3, 1));
         setLocationRelativeTo(null);
 
         cardLabel = new JLabel("", SwingConstants.CENTER);
+        solutionLabel = new JLabel("", SwingConstants.CENTER);
         add(cardLabel);
+        add(solutionLabel);
 
         JPanel mainButtonPanel = new JPanel(new GridLayout(2, 3));
 
@@ -37,6 +39,15 @@ public class KarteikartenView extends JFrame {
 
     public void setCardText(String text) {
         cardLabel.setText(text);
+        solutionLabel.setText("");
+    }
+
+    public void showSolution(String solution) {
+        solutionLabel.setText("Lösung: " + solution);
+    }
+
+    public void hideSolution() {
+        solutionLabel.setText("");
     }
 
     public void addNextListener(ActionListener listener) {
@@ -53,5 +64,13 @@ public class KarteikartenView extends JFrame {
 
     public void addWrongListener(ActionListener listener) {
         dontKnowButton.addActionListener(listener);
+    }
+
+    public void addAddCardListener(ActionListener listener) {
+        addButton.addActionListener(listener);
+    }
+
+    public void addSolutionListener(ActionListener listener) {
+        solutionButton.addActionListener(listener);
     }
 }
