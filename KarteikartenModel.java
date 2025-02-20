@@ -9,8 +9,17 @@ public class KarteikartenModel {
     private int wrongAnswers = 0;
 
     public KarteikartenModel() {
+        initializeDefaultCards();
+    }
+
+    public void initializeDefaultCards() {
+        karteikarten.clear();
+        loesungen.clear();
         addFlashcard("Karteikarte 1", "Lösung 1");
         addFlashcard("Karteikarte 2", "Lösung 2");
+        currentIndex = 0;
+        correctAnswers = 0;
+        wrongAnswers = 0;
     }
 
     public String getCurrentFlashcard() {
@@ -53,5 +62,9 @@ public class KarteikartenModel {
 
     public int getWrongAnswers() {
         return wrongAnswers;
+    }
+
+    public void reset() {
+        initializeDefaultCards();
     }
 }

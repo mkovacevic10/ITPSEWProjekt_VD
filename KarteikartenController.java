@@ -25,6 +25,7 @@ public class KarteikartenController {
             public void actionPerformed(ActionEvent e) {
                 new Ergebnis(model.getCorrectAnswers(), model.getWrongAnswers(), contr).setVisible(true);
                 view.dispose();
+                model.reset();
             }
         });
 
