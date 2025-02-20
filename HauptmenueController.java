@@ -1,4 +1,6 @@
 import java.awt.event.*;
+import java.util.Arrays;
+import java.util.List;
 
 public class HauptmenueController {
     public HauptmenueView getView() {
@@ -19,6 +21,13 @@ public class HauptmenueController {
         HauptmenueController contr = this;
         KarteikartenModel modelk = new KarteikartenModel();
         KarteikartenView viewK = new KarteikartenView();
+        QuizView viewq = new QuizView();
+        List<Fragen> questions = Arrays.asList(
+                new Fragen("Was ist 2+2?", "4"),
+                new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
+        );
+        QuizModel modelq = new QuizModel(questions);
+
 
         // Verbinde die Buttons mit den entsprechenden Aktionen
         this.view.addLernkarteiListener(new ActionListener() {
@@ -34,6 +43,8 @@ public class HauptmenueController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 view.showMessage(model.getQuizMessage());
+                view.nextProgram();
+                new QuizController(modelq, viewq, contr);
             }
         });
 

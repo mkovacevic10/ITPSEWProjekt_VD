@@ -10,11 +10,12 @@ import java.util.List;
 public class QuizController {
     private QuizModel model;
     private QuizView view;
+    HauptmenueController contr;
 
-    public QuizController(QuizModel model, QuizView view) {
+    public QuizController(QuizModel model, QuizView view, HauptmenueController contr) {
         this.model = model;
         this.view = view;
-
+        this.contr = contr;
         view.getSubmitButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -32,7 +33,8 @@ public class QuizController {
         view.getMainMenuButton().addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                goToMainMenu();
+                view.dispose();
+                contr.getView().setVisible(true);
             }
         });
 
@@ -109,22 +111,12 @@ public class QuizController {
             public void run() {
                 view.dispose();
                 QuizView newView = new QuizView();
-                new QuizController(model, newView);
+                new QuizController(model, newView, contr);
             }
         });
     }
 
     private void goToMainMenu() {
         // Keine zusätzliche Logik erforderlich, da der Button keine Funktion haben soll
-    }
-
-    public static void main(String[] args) {
-        List<Fragen> questions = Arrays.asList(
-                new Fragen("Was ist 2+2?", "4"),
-                new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
-        );
-        QuizModel model = new QuizModel(questions);
-        QuizView view = new QuizView();
-        new QuizController(model, view);
     }
 }
