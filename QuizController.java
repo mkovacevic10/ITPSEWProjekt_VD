@@ -105,7 +105,11 @@ public class QuizController {
     }
 
     private void restartQuiz() {
-        model.resetQuiz();
+        List<Fragen> questions = Arrays.asList(
+                new Fragen("Was ist 2+2?", "4"),
+                new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
+        );
+        model = new QuizModel(questions);
         SwingUtilities.invokeLater(new Runnable() {
             @Override
             public void run() {

@@ -19,14 +19,15 @@ public class HauptmenueController {
         this.view = view;
         this.model = model;
         HauptmenueController contr = this;
+        final HauptmenueModel finalModel = model;
         KarteikartenModel modelk = new KarteikartenModel();
         KarteikartenView viewK = new KarteikartenView();
-        QuizView viewq = new QuizView();
+        QuizView viewq = null;
         List<Fragen> questions = Arrays.asList(
                 new Fragen("Was ist 2+2?", "4"),
                 new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
         );
-        QuizModel modelq = new QuizModel(questions);
+        QuizModel quizModel = new QuizModel(questions);
 
 
         // Verbinde die Buttons mit den entsprechenden Aktionen
@@ -38,16 +39,15 @@ public class HauptmenueController {
                 new KarteikartenController(modelk,viewK,contr);
             }
         });
-
-        this.view.addQuizListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.showMessage(model.getQuizMessage());
-                view.nextProgram();
-                new QuizController(modelq, viewq, contr);
-            }
-        });
-
+            this.view.addQuizListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    view.showMessage(finalModel.getQuizMessage());
+                    view.nextProgram();
+                    QuizView viewq = new QuizView();
+                    new QuizController(quizModel, viewq, HauptmenueController.this); // Verwende die final-Variable
+                }
+            });
         this.view.addSpielListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
