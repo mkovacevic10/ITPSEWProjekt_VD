@@ -1,14 +1,41 @@
-import java.util.List;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.*;
 
 public class QuizModel {
     private List<Fragen> questions;
     private int currentQuestionIndex;
     private int score;
 
-    public QuizModel(List<Fragen> questions) {
-        this.questions = questions;
+    public QuizModel(String questionFile, String answerFile) {
+        this.questions = loadQuestionsFromFiles(questionFile, answerFile);
         this.currentQuestionIndex = 0;
         this.score = 0;
+    }
+
+    private List<Fragen> loadQuestionsFromFiles(String questionFile, String answerFile) {
+        List<Fragen> loadedQuestions = new ArrayList<>();
+        try {
+            List<String> questionLines = Files.readAllLines(Paths.get(questionFile));
+            List<String> answerLines = Files.readAllLines(Paths.get(answerFile));
+
+            int maxQuestions = Math.min(10, Math.min(questionLines.size(), answerLines.size())); // Maximal 10 Fragen
+
+            List<Integer> indices = new ArrayList<>();
+            for (int i = 0; i < maxQuestions; i++) {
+                indices.add(i);
+            }
+            Collections.shuffle(indices); // Zufällige Reihenfolge
+
+            for (int i = 0; i < maxQuestions; i++) {
+                int idx = indices.get(i);
+                loadedQuestions.add(new Fragen(questionLines.get(idx), answerLines.get(idx)));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return loadedQuestions;
     }
 
     public Fragen getCurrentQuestion() {
