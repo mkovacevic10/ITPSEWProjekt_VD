@@ -72,6 +72,6 @@ public class QuizController {
     private void restartQuiz() {
         model.resetQuiz();
         view.dispose();
-        new QuizController(new QuizModel("itp-programm/frage.txt", "itp-programm/antwort.txt"), new QuizView(), contr);
+        new QuizController(new QuizModel(contr.getVerzeichnis()+"\\frage.txt", contr.getVerzeichnis()+"\\antwort.txt"), new QuizView(), contr);
     }
 }

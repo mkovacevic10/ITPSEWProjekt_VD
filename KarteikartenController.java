@@ -15,11 +15,13 @@ public class KarteikartenController {
     private List<String> answers;
     private Random random;
     private String currentQuestion; // Speichert die aktuelle Frage
+    private HauptmenueController ctrl;
 
-    public KarteikartenController(KarteikartenModel model, KarteikartenView view, HauptmenueController contr) {
+    public KarteikartenController(KarteikartenModel model, KarteikartenView view, HauptmenueController contr, String verz) {
         this.model = model;
         this.view = view;
         this.random = new Random();
+        this.ctrl = contr;
 
         // Lade Fragen und Antworten
         loadQuestionsAndAnswers();
@@ -101,8 +103,8 @@ public class KarteikartenController {
         questions = new ArrayList<>();
         answers = new ArrayList<>();
         try {
-            BufferedReader questionReader = new BufferedReader(new FileReader("itp-programm\\terms.txt"));
-            BufferedReader answerReader = new BufferedReader(new FileReader("itp-programm\\definitions.txt"));
+            BufferedReader questionReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis()+"\\terms.txt"));
+            BufferedReader answerReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis()+"\\definitions.txt"));
             String questionLine, answerLine;
 
             while ((questionLine = questionReader.readLine()) != null && (answerLine = answerReader.readLine()) != null) {

@@ -7,37 +7,42 @@ import java.util.Random;
 public class HauptmenueController {
     private HauptmenueView view;
     private HauptmenueModel model;
+    private String verzeichnis;
 
     public HauptmenueController(HauptmenueView view, HauptmenueModel model) {
         this.view = view;
         this.model = model;
+        verzeichnis = "itp-programm";
         HauptmenueController contr = this;
+        SpeichernLaden sl = new SpeichernLaden(contr);
 
         // Lernkartei-Button Listener
         this.view.addLernkarteiListener(e -> {
             view.showMessage(model.getLernkarteiMessage());
             view.nextProgram();
-            new KarteikartenController(new KarteikartenModel(), new KarteikartenView(), contr);
+            new KarteikartenController(new KarteikartenModel(), new KarteikartenView(), contr, this.verzeichnis);
         });
 
         // Quiz-Button Listener
         this.view.addQuizListener(e -> {
             view.showMessage(model.getQuizMessage());
             view.nextProgram();
-            new QuizController(new QuizModel("itp-programm\\questions.txt", "itp-programm\\answers.txt"), new QuizView(), this);
+            new QuizController(new QuizModel(verzeichnis+"\\questions.txt", verzeichnis+"\\answers.txt"), new QuizView(), this);
         });
 
         // Spiel-Button Listener
         this.view.addSpielListener(e -> {
             view.showMessage(model.getSpielMessage());
             view.nextProgram();
-            String[] questionAndAnswer = getRandomQuestionAndAnswer("itp-programm\\questions.txt", "itp-programm\\answers.txt");
-            new Spiel(questionAndAnswer[0], questionAndAnswer[1], contr); // Frage und Antwort werden übergeben
+            String[] questionAndAnswer = getRandomQuestionAndAnswer(verzeichnis+"\\questions.txt", verzeichnis+"\\answers.txt");
+            new Spiel(questionAndAnswer[0], questionAndAnswer[1], contr);
         });
 
         // Datei-Button Listener
         this.view.addDateiListener(e -> {
             view.showMessage(model.getDateiMessage());
+            view.nextProgram();
+            sl.visibilty(true);
         });
 
         // Schließen-Button Listener
@@ -63,6 +68,13 @@ public class HauptmenueController {
             e.printStackTrace();
         }
         return new String[]{"Frage nicht verfügbar", "DEFAULT"}; // Falls Datei nicht gelesen werden kann, Standard setzen
+    }
+    public void setVerzeichnis(String v) {
+        this.verzeichnis=v;
+    }
+
+    public String getVerzeichnis() {
+        return verzeichnis;
     }
 
     public static void main(String[] args) {
