@@ -1,78 +1,73 @@
-import java.awt.event.*;
-import java.util.Arrays;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.Random;
 
 public class HauptmenueController {
-    public HauptmenueView getView() {
-        return view;
-    }
-
-    public HauptmenueModel getModel() {
-        return model;
-    }
-
     private HauptmenueView view;
     private HauptmenueModel model;
-    private Spiel spiel;
 
     public HauptmenueController(HauptmenueView view, HauptmenueModel model) {
         this.view = view;
         this.model = model;
         HauptmenueController contr = this;
-        final HauptmenueModel finalModel = model;
-        KarteikartenModel modelk = new KarteikartenModel();
-        KarteikartenView viewK = new KarteikartenView();
-        QuizView viewq = null;
-        List<Fragen> questions = Arrays.asList(
-                new Fragen("Was ist 2+2?", "4"),
-                new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
-        );
-        QuizModel quizModel = new QuizModel(questions);
 
-
-        // Verbinde die Buttons mit den entsprechenden Aktionen
-        this.view.addLernkarteiListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.showMessage(model.getLernkarteiMessage());
-                view.nextProgram();
-                new KarteikartenController(modelk,viewK,contr);
-            }
-        });
-            this.view.addQuizListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    view.showMessage(finalModel.getQuizMessage());
-                    view.nextProgram();
-                    QuizView viewq = new QuizView();
-                    new QuizController(quizModel, viewq, HauptmenueController.this); // Verwende die final-Variable
-                }
-            });
-        this.view.addSpielListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.showMessage(model.getSpielMessage());
-                view.nextProgram();
-                new Spiel("ayri", contr);
-
-
-            }
+        // Lernkartei-Button Listener
+        this.view.addLernkarteiListener(e -> {
+            view.showMessage(model.getLernkarteiMessage());
+            view.nextProgram();
+            new KarteikartenController(new KarteikartenModel(), new KarteikartenView(), contr);
         });
 
-        this.view.addDateiListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.showMessage(model.getDateiMessage());
-            }
+        // Quiz-Button Listener
+        this.view.addQuizListener(e -> {
+            view.showMessage(model.getQuizMessage());
+            view.nextProgram();
+            new QuizController(new QuizModel(List.of(
+                    new Fragen("Was ist 2+2?", "4"),
+                    new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
+            )), new QuizView(), contr);
         });
 
-        this.view.addSchließenListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                view.closeProgram();
-            }
+        // Spiel-Button Listener
+        this.view.addSpielListener(e -> {
+            view.showMessage(model.getSpielMessage());
+            view.nextProgram();
+            String[] questionAndAnswer = getRandomQuestionAndAnswer("C:\\itp-programm\\questions.txt", "C:\\itp-programm\\answers.txt");
+            new Spiel(questionAndAnswer[0], questionAndAnswer[1], contr); // Frage und Antwort werden übergeben
+        });
+
+        // Datei-Button Listener
+        this.view.addDateiListener(e -> {
+            view.showMessage(model.getDateiMessage());
+        });
+
+        // Schließen-Button Listener
+        this.view.addSchließenListener(e -> {
+            view.closeProgram();
         });
     }
+
+    public HauptmenueView getView() {
+        return view;
+    }
+
+    // Methode, um eine zufällige Frage und Antwort aus den Dateien zu holen
+    public String[] getRandomQuestionAndAnswer(String questionFile, String answerFile) {
+        try {
+            List<String> questions = Files.readAllLines(Paths.get(questionFile));
+            List<String> answers = Files.readAllLines(Paths.get(answerFile));
+            if (!questions.isEmpty() && !answers.isEmpty() && questions.size() == answers.size()) {
+                int index = new Random().nextInt(questions.size());
+                return new String[]{questions.get(index), answers.get(index)};
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return new String[]{"Frage nicht verfügbar", "DEFAULT"}; // Falls Datei nicht gelesen werden kann, Standard setzen
+    }
+
     public static void main(String[] args) {
         HauptmenueModel model = new HauptmenueModel();
         HauptmenueView view = new HauptmenueView();
