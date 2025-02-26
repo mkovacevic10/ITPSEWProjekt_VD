@@ -34,7 +34,7 @@ public class HauptmenueController {
         this.view.addSpielListener(e -> {
             view.showMessage(model.getSpielMessage());
             view.nextProgram();
-            String[] questionAndAnswer = getRandomQuestionAndAnswer("C:\\itp-programm\\questions.txt", "C:\\itp-programm\\answers.txt");
+            String[] questionAndAnswer = getRandomQuestionAndAnswer("itp-programm\\questions.txt", "itp-programm\\answers.txt");
             new Spiel(questionAndAnswer[0], questionAndAnswer[1], contr); // Frage und Antwort werden übergeben
         });
 

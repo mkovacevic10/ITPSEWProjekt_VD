@@ -81,7 +81,7 @@ public class Spiel extends JFrame {
         });
 
         nextWordButton.addActionListener(e -> {
-            String[] nextQuestionAndAnswer = contr.getRandomQuestionAndAnswer("C:\\itp-programm\\questions.txt", "C:\\itp-programm\\answers.txt");
+            String[] nextQuestionAndAnswer = contr.getRandomQuestionAndAnswer("itp-programm\\questions.txt", "itp-programm\\answers.txt");
             updateGame(nextQuestionAndAnswer[0], nextQuestionAndAnswer[1]);
         });
 

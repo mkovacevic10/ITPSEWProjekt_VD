@@ -1,0 +1,59 @@
+Ein Lastenheft beschreibt die Anforderungen eines Kunden an ein Produkt oder eine Software.
+Ein Pflichtenheft beschreibt, wie die Anforderungen aus dem Lastenheft technisch umgesetzt werden.
+Eine Machbarkeitsstudie bewertet, ob ein Projekt technisch und wirtschaftlich realisierbar ist.
+Die Aufwandsschätzung ermittelt den benötigten Zeit- und Ressourcenaufwand für ein Projekt.
+Eine Projektphase ist ein definierter Abschnitt im Projektverlauf mit spezifischen Zielen.
+Die Definitionsphase legt die Projektziele, Anforderungen und Rahmenbedingungen fest.
+Die Entwurfsphase beschreibt die Architektur und das Design der Software.
+Die Implementierungsphase ist die eigentliche Entwicklungsphase der Software.
+Die Abnahme erfolgt, wenn der Kunde das entwickelte Produkt offiziell akzeptiert.
+Die Wartung umfasst Fehlerbehebungen und Anpassungen nach der Einführung der Software.
+Der Betrieb ist die Phase, in der eine Software produktiv genutzt wird.
+Eine Risikoanalyse bewertet mögliche Gefahren und Unsicherheiten eines Projekts.
+Der Softwareentwurf definiert die Struktur und das Design einer Software.
+Das Testen überprüft eine Software auf Fehler und Funktionalität.
+Eine Schulung vermittelt Anwendern den Umgang mit einer Software.
+Die Abnahmephase stellt sicher, dass das Produkt alle Anforderungen erfüllt.
+Die Zielbestimmung legt die gewünschten Ergebnisse eines Projekts fest.
+Der Produkteinsatz beschreibt die Einführung und Nutzung eines Produkts.
+Produktfunktionen sind die spezifischen Fähigkeiten und Merkmale eines Produkts.
+Produktdaten sind die gespeicherten und verarbeiteten Informationen eines Produkts.
+Produktleistungen definieren die Qualität und Effizienz eines Produkts.
+Qualitätsanforderungen legen fest, welche Qualitätsmerkmale ein Produkt erfüllen muss.
+Ein Glossar enthält die wichtigsten Begriffe und Definitionen eines Projekts.
+Die Benutzungsoberfläche ist die Schnittstelle zwischen Anwender und Software.
+Versionierung ist die Verwaltung und Nachverfolgung verschiedener Softwareversionen.
+Eine Marktanalyse untersucht Marktbedingungen, Trends und Wettbewerber.
+Eine Rentabilitätsanalyse bewertet die Wirtschaftlichkeit eines Projekts.
+Systemsoftware umfasst Betriebssysteme und grundlegende Softwarekomponenten.
+Supportsoftware unterstützt die Entwicklung, Wartung oder Verwaltung von Software.
+Anwendungssoftware sind Programme, die für Endbenutzer bestimmt sind.
+Funktionalität beschreibt, welche Aufgaben eine Software erfüllen kann.
+Zuverlässigkeit beschreibt die Stabilität und Fehlerresistenz einer Software.
+Benutzbarkeit beschreibt die Benutzerfreundlichkeit und intuitive Bedienbarkeit einer Software.
+Effizienz misst die Leistungsfähigkeit und Ressourcennutzung einer Software.
+Änderbarkeit beschreibt, wie einfach eine Software an neue Anforderungen angepasst werden kann.
+Übertragbarkeit beschreibt, wie einfach eine Software auf andere Systeme übertragbar ist.
+Ein Programmierer entwickelt und schreibt Softwarecode.
+Produktivität misst den Output eines Entwicklers oder eines Teams in einem bestimmten Zeitraum.
+Softwaretechnik umfasst Methoden und Werkzeuge zur effizienten Softwareentwicklung.
+Software-Ingenieure entwerfen, entwickeln und testen Softwarelösungen.
+Fachliche Durchführbarkeit bewertet, ob ein Projekt aus geschäftlicher Sicht sinnvoll ist.
+Technische Realisierbarkeit bewertet, ob eine technische Lösung umsetzbar ist.
+Technische Varianten sind verschiedene technische Lösungsansätze für ein Problem.
+Eine Wettbewerbsanalyse untersucht die Stärken und Schwächen von Konkurrenten.
+Eine Nutzungsanalyse untersucht, wie eine Software von Anwendern verwendet wird.
+Eine Standortanalyse bewertet den besten Standort für eine Geschäftstätigkeit.
+Erfahrungsgliederung strukturiert bisher gewonnene Erkenntnisse in einem Projekt.
+Kundenanfragen beeinflussen die Entwicklung neuer Software durch spezifische Anforderungen.
+Forschungsergebnisse liefern neue Erkenntnisse für die Softwareentwicklung.
+Planungsgrundlagen sind die Basisinformationen für die Planung eines Projekts.
+Die Entwicklungsdauer gibt an, wie lange die Entwicklung eines Produkts dauert.
+Eine Kostenanalyse untersucht die finanziellen Aufwände eines Projekts.
+Methoden der Aufwandsschätzung helfen, den Ressourcenbedarf eines Projekts zu berechnen.
+Die Function-Point-Methode schätzt den Entwicklungsaufwand anhand von Funktionen der Software.
+Die Usecase-Point-Methode schätzt den Aufwand basierend auf Anwendungsfällen.
+Der Second-System-Effekt beschreibt das Risiko, dass ein Nachfolgesystem überkomplex wird.
+Produktivitätszahlen geben an, wie effizient Softwareentwickler arbeiten.
+Lines of Code (LOC) ist eine Metrik zur Messung der Codegröße eines Projekts.
+Software-Entwicklungskosten umfassen alle finanziellen Aufwände für die Softwareerstellung.

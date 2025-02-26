@@ -1,0 +1,34 @@
+Wie nennt man die Verwaltung und Nachverfolgung verschiedener Softwareversionen?
+Welche Analyse untersucht Marktbedingungen und Wettbewerber?
+Wie nennt man die Untersuchung der Wirtschaftlichkeit eines Projekts?
+Welche Software umfasst Betriebssysteme und grundlegende Komponenten?
+Welche Software unterstützt Entwicklung, Wartung oder Verwaltung?
+Wie nennt man Programme, die für Endbenutzer bestimmt sind?
+Was beschreibt, welche Aufgaben eine Software erfüllen kann?
+Was beschreibt die Stabilität und Fehlerresistenz einer Software?
+Wie nennt man die Benutzerfreundlichkeit einer Software?
+Welche Eigenschaft misst die Leistungsfähigkeit einer Software?
+Was beschreibt die einfache Anpassbarkeit einer Software?
+Was beschreibt die einfache Übertragbarkeit einer Software auf andere Systeme?
+Wer entwickelt und schreibt Softwarecode?
+Was misst den Output eines Entwicklers oder Teams über einen Zeitraum?
+Welche Disziplin umfasst Methoden zur effizienten Softwareentwicklung?
+Wer entwirft, entwickelt und testet Softwarelösungen?
+Was bewertet, ob ein Projekt aus geschäftlicher Sicht sinnvoll ist?
+Was bewertet, ob eine technische Lösung umsetzbar ist?
+Wie nennt man verschiedene technische Lösungsansätze für ein Problem?
+Welche Analyse untersucht die Stärken und Schwächen von Konkurrenten?
+Welche Analyse untersucht die Nutzung einer Software durch Anwender?
+Welche Analyse bewertet den besten Standort für eine Geschäftstätigkeit?
+Was strukturiert bisher gewonnene Erkenntnisse in einem Projekt?
+Was beeinflusst die Entwicklung neuer Software durch spezifische Anforderungen?
+Was liefern neue Erkenntnisse für die Softwareentwicklung?
+Was sind die Basisinformationen für die Planung eines Projekts?
+Welche Dauer gibt an, wie lange die Entwicklung eines Produkts dauert?
+Welche Analyse untersucht die finanziellen Aufwände eines Projekts?
+Welche Methode schätzt den Entwicklungsaufwand anhand von Softwarefunktionen?
+Welche Methode schätzt den Aufwand basierend auf Anwendungsfällen?
+Wie nennt man das Risiko, dass ein Nachfolgesystem überkomplex wird?
+Welche Zahlen geben an, wie effizient Softwareentwickler arbeiten?
+Welche Metrik misst die Codegröße eines Projekts?
+Was umfasst alle finanziellen Aufwände für die Softwareerstellung?

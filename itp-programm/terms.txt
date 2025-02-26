@@ -1,0 +1,59 @@
+Lastenheft
+Pflichtenheft
+Machbarkeitsstudie
+Aufwandsschätzung
+Projektphase
+Definitionsphase
+Entwurfsphase
+Implementierungsphase
+Abnahme
+Wartung
+Betrieb
+Risikoanalyse
+Softwareentwurf
+Testen
+Schulung
+Abnahmephase
+Zielbestimmung
+Produkteinsatz
+Produktfunktionen
+Produktdaten
+Produktleistungen
+Qualitätsanforderungen
+Glossar
+Benutzungsoberfläche
+Versionierung
+Marktanalyse
+Rentabilitätsanalyse
+Systemsoftware
+Supportsoftware
+Anwendungssoftware
+Funktionalität
+Zuverlässigkeit
+Benutzbarkeit
+Effizienz
+Änderbarkeit
+Übertragbarkeit
+Programmierer
+Produktivität
+Softwaretechnik
+Software-Ingenieure
+Fachliche Durchführbarkeit
+Technische Realisierbarkeit
+Technische Varianten
+Wettbewerbsanalyse
+Nutzungsanalyse
+Standortanalyse
+Erfahrungsgliederung
+Kundenanfragen
+Forschungsergebnisse
+Planungsgrundlagen
+Entwicklungsdauer
+Kostenanalyse
+Methoden der Aufwandsschätzung
+Function-Point-Methode
+Usecase-Point-Methode
+Second-System-Effekt
+Produktivitätszahlen
+Lines of Code (LOC)
+Software-Entwicklungskosten

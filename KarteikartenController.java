@@ -101,8 +101,8 @@ public class KarteikartenController {
         questions = new ArrayList<>();
         answers = new ArrayList<>();
         try {
-            BufferedReader questionReader = new BufferedReader(new FileReader("C:\\itp-programm\\terms.txt"));
-            BufferedReader answerReader = new BufferedReader(new FileReader("C:\\itp-programm\\definitions.txt"));
+            BufferedReader questionReader = new BufferedReader(new FileReader("itp-programm\\terms.txt"));
+            BufferedReader answerReader = new BufferedReader(new FileReader("itp-programm\\definitions.txt"));
             String questionLine, answerLine;
 
             while ((questionLine = questionReader.readLine()) != null && (answerLine = answerReader.readLine()) != null) {

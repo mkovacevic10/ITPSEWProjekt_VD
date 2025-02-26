@@ -1,0 +1,34 @@
+Versionierung
+Marktanalyse
+Rentabilitätsanalyse
+Systemsoftware
+Supportsoftware
+Anwendungssoftware
+Funktionalität
+Zuverlässigkeit
+Benutzbarkeit
+Effizienz
+Änderbarkeit
+Übertragbarkeit
+Programmierer
+Produktivität
+Softwaretechnik
+Software-Ingenieure
+Fachliche Durchführbarkeit
+Technische Realisierbarkeit
+Technische Varianten
+Wettbewerbsanalyse
+Nutzungsanalyse
+Standortanalyse
+Erfahrungsgliederung
+Kundenanfragen
+Forschungsergebnisse
+Planungsgrundlagen
+Entwicklungsdauer
+Kostenanalyse
+Function-Point-Methode
+Usecase-Point-Methode
+Second-System-Effekt
+Produktivitätszahlen
+Lines of Code
+Software-Entwicklungskosten
