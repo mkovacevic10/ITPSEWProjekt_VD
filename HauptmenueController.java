@@ -24,10 +24,7 @@ public class HauptmenueController {
         this.view.addQuizListener(e -> {
             view.showMessage(model.getQuizMessage());
             view.nextProgram();
-            new QuizController(new QuizModel(List.of(
-                    new Fragen("Was ist 2+2?", "4"),
-                    new Fragen("Was ist die Hauptstadt von Frankreich?", "Paris")
-            )), new QuizView(), contr);
+            new QuizController(new QuizModel("itp-programm\\questions.txt", "itp-programm\\answers.txt"), new QuizView(), this);
         });
 
         // Spiel-Button Listener
