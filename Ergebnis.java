@@ -8,7 +8,7 @@ public class Ergebnis extends JFrame {
         setTitle("Ergebnis");
         setSize(300, 150);
         setLayout(new GridLayout(3, 1));
-        setLocationRelativeTo(null);
+        setLocationRelativeTo(null); // Zentriert das Fenster auf dem Bildschirm
 
         JLabel scoreLabel = new JLabel("Weiß ich: " + correct + " | Weiß ich nicht: " + wrong, SwingConstants.CENTER);
         add(scoreLabel);

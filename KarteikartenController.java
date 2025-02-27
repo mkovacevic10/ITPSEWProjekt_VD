@@ -7,75 +7,82 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-public class KarteikartenController {
-    private KarteikartenModel model;
-    private KarteikartenView view;
-    private boolean showSolution = false;
-    private List<String> questions;
-    private List<String> answers;
-    private Random random;
-    private String currentQuestion; // Speichert die aktuelle Frage
-    private HauptmenueController ctrl;
 
+public class KarteikartenController {
+    private KarteikartenModel model; // Das Modell speichert den Fortschritt der Lernkarten
+    private KarteikartenView view; // Die View zeigt die Lernkarten an
+    private boolean showSolution = false; // Gibt an, ob die Lösung angezeigt wird
+    private List<String> questions; // Liste der Fragen
+    private List<String> answers; // Liste der Antworten
+    private Random random; // Zufallszahlengenerator für zufällige Karten
+    private String currentQuestion; // Speichert die aktuell angezeigte Frage
+    private HauptmenueController ctrl; // Hauptmenü-Controller zur Navigation
+
+    // Konstruktor: Initialisiert das Modell, die View und lädt die Fragen
     public KarteikartenController(KarteikartenModel model, KarteikartenView view, HauptmenueController contr, String verz) {
         this.model = model;
         this.view = view;
         this.random = new Random();
         this.ctrl = contr;
 
-        // Lade Fragen und Antworten
+        // Lade Fragen und Antworten aus Dateien
         loadQuestionsAndAnswers();
 
         // Wähle eine zufällige Frage und zeige sie an
-        currentQuestion = getRandomQuestion(); // Speichern der aktuellen Frage
-        view.setCardText(currentQuestion); // Die Frage an das View übergeben
+        currentQuestion = getRandomQuestion();
+        view.setCardText(currentQuestion);
 
+        // Listener für den "Nächste Karte"-Button
         view.addNextListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                currentQuestion = getRandomQuestion(); // Neue Frage wählen
+                currentQuestion = getRandomQuestion(); // Neue Frage auswählen
                 view.setCardText(currentQuestion); // Neue Frage anzeigen
-                showSolution = false;
+                showSolution = false; // Lösung wird zurückgesetzt
             }
         });
 
+        // Listener für den "Beenden"-Button
         view.addExitListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                new Ergebnis(model.getCorrectAnswers(), model.getWrongAnswers(), contr).setVisible(true);
-                view.dispose();
-                model.reset();
+                new Ergebnis(model.getCorrectAnswers(), model.getWrongAnswers(), contr).setVisible(true); // Ergebnisse anzeigen
+                view.dispose(); // Fenster schließen
+                model.reset(); // Fortschritt zurücksetzen
             }
         });
 
+        // Listener für den "Richtig"-Button
         view.addCorrectListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (!showSolution) {
-                    model.incrementCorrect();
-                    view.showSolution(getAnswerForCurrentQuestion());
+                if (!showSolution) { // Nur ausführen, wenn die Lösung noch nicht angezeigt wurde
+                    model.incrementCorrect(); // Zähler für richtige Antworten erhöhen
+                    view.showSolution(getAnswerForCurrentQuestion()); // Lösung anzeigen
                     showSolution = true;
                 }
             }
         });
 
+        // Listener für den "Falsch"-Button
         view.addWrongListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (!showSolution) {
-                    model.incrementWrong();
-                    view.hideSolution();
+                if (!showSolution) { // Nur ausführen, wenn die Lösung noch nicht angezeigt wurde
+                    model.incrementWrong(); // Zähler für falsche Antworten erhöhen
+                    view.hideSolution(); // Lösung nicht anzeigen
                     showSolution = true;
                 }
             }
         });
 
+        // Listener für den "Karte hinzufügen"-Button
         view.addAddCardListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String newQuestion = JOptionPane.showInputDialog(view, "Neue Frage eingeben:");
                 if (newQuestion != null && !newQuestion.isEmpty()) {
                     String newAnswer = JOptionPane.showInputDialog(view, "Lösung für die neue Frage eingeben:");
                     if (newAnswer != null && !newAnswer.isEmpty()) {
-                        // Füge die neue Frage und Lösung der Liste hinzu
+                        // Neue Frage und Antwort zur Liste hinzufügen
                         questions.add(newQuestion);
                         answers.add(newAnswer);
-                        model.addFlashcard(newQuestion, newAnswer); // Optional, falls das Modell eine Methode dafür hat
+                        model.addFlashcard(newQuestion, newAnswer); // Falls das Modell diese Methode hat
                         JOptionPane.showMessageDialog(view, "Karteikarte hinzugefügt!");
                     } else {
                         JOptionPane.showMessageDialog(view, "Bitte geben Sie eine Lösung ein.");
@@ -86,27 +93,31 @@ public class KarteikartenController {
             }
         });
 
+        // Listener für den "Lösung hinzufügen"-Button
         view.addSolutionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 String solution = JOptionPane.showInputDialog(view, "Lösung für die letzte hinzugefügte Karteikarte eingeben:");
                 if (solution != null && !solution.isEmpty()) {
-                    model.addSolutionToLastCard(solution);
+                    model.addSolutionToLastCard(solution); // Lösung zur letzten Karteikarte hinzufügen
                     JOptionPane.showMessageDialog(view, "Lösung hinzugefügt!");
                 }
             }
         });
 
-        view.setVisible(true);
+        view.setVisible(true); // Die View anzeigen
     }
 
+    // Methode zum Laden der Fragen und Antworten aus den Dateien
     private void loadQuestionsAndAnswers() {
         questions = new ArrayList<>();
         answers = new ArrayList<>();
         try {
-            BufferedReader questionReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis()+"\\terms.txt"));
-            BufferedReader answerReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis()+"\\definitions.txt"));
+            // Dateien für Fragen und Antworten öffnen
+            BufferedReader questionReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis() + "\\terms.txt"));
+            BufferedReader answerReader = new BufferedReader(new FileReader(ctrl.getVerzeichnis() + "\\definitions.txt"));
             String questionLine, answerLine;
 
+            // Zeilenweise die Fragen und Antworten einlesen
             while ((questionLine = questionReader.readLine()) != null && (answerLine = answerReader.readLine()) != null) {
                 questions.add(questionLine);
                 answers.add(answerLine);
@@ -119,18 +130,18 @@ public class KarteikartenController {
         }
     }
 
+    // Methode zum Zufälligen Abrufen einer Frage aus der Liste
     private String getRandomQuestion() {
-        int index = random.nextInt(questions.size());
-        return questions.get(index);
+        int index = random.nextInt(questions.size()); // Zufälligen Index wählen
+        return questions.get(index); // Frage zurückgeben
     }
 
+    // Methode zur Ermittlung der Antwort zur aktuellen Frage
     private String getAnswerForCurrentQuestion() {
-        // Finde die Antwort basierend auf der aktuellen Frage
-        int index = questions.indexOf(currentQuestion); // Verwende die gespeicherte Frage
+        int index = questions.indexOf(currentQuestion); // Index der aktuellen Frage finden
         if (index != -1) {
-            return answers.get(index);
+            return answers.get(index); // Die passende Antwort zurückgeben
         }
-        return "";
+        return ""; // Falls keine Antwort gefunden wird
     }
 }
-
