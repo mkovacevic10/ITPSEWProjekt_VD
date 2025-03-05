@@ -13,6 +13,7 @@ public class QuizController {
         this.model = model;
         this.view = view;
         this.contr = contr;
+        this.view.setController(this.contr);
 
         // ActionListener für den "Eingabe bestätigen"-Button
         view.getSubmitButton().addActionListener(new ActionListener() {
@@ -69,7 +70,7 @@ public class QuizController {
         view.clearLayout(); // Entfernt bestehende GUI-Elemente
         JPanel resultPanel = new JPanel(); // Neues Panel für das Ergebnis
         JLabel resultLabel = new JLabel(
-                "<html>Ergebnis: " + score + "/" + totalQuestions + "<br>Quiz beendet!</html>",
+                "Ergebnis: " + score + "/" + totalQuestions + " Quiz beendet!",
                 SwingConstants.CENTER
         ); // Erstellt ein Label mit der Punktzahl
         resultPanel.add(resultLabel); // Fügt das Label ins Panel ein
@@ -78,6 +79,7 @@ public class QuizController {
         view.getMainMenuButton().setVisible(true); // Zeigt den "Hauptmenü"-Button
         view.revalidate(); // Aktualisiert das Layout
         view.repaint(); // Erzwingt eine Neuzeichnung der GUI
+        view.getBackButton().setVisible(true);
     }
 
     // Startet das Quiz neu

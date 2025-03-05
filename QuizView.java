@@ -1,5 +1,7 @@
 import javax.swing.*;  // Importiert die Swing-Bibliothek für die GUI-Komponenten
 import java.awt.*;     // Importiert die AWT-Bibliothek für Layouts und andere grafische Funktionen
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 // Die Klasse QuizView erbt von JFrame und stellt das GUI-Fenster für das Quiz dar
 public class QuizView extends JFrame {
@@ -10,6 +12,13 @@ public class QuizView extends JFrame {
     private JButton retryButton;       // Button zum Wiederholen des Quiz
     private JButton mainMenuButton;    // Button zur Rückkehr ins Hauptmenü
     private JPanel mainPanel;          // Panel zur Organisation der GUI-Elemente
+    private HauptmenueController contr;
+
+    public JButton getBackButton() {
+        return backButton;
+    }
+
+    private JButton backButton;
 
     // Konstruktor der Klasse QuizView
     public QuizView() {
@@ -52,7 +61,19 @@ public class QuizView extends JFrame {
         gbc.fill = GridBagConstraints.HORIZONTAL; // Füllt horizontal den verfügbaren Platz
         add(mainPanel, gbc); // Fügt das Hauptpanel zum JFrame hinzu
 
+
+        this.backButton = new JButton("Zurück zum Hauptmenü");
+        add(backButton);
+        backButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                dispose();
+                contr.getView().setVisible(true);
+            }
+        });
+        backButton.setVisible(false);
         setVisible(true); // Zeigt das Fenster an
+
     }
 
     // Entfernt alle Komponenten aus dem Panel (zum Zurücksetzen des Layouts)
@@ -89,4 +110,8 @@ public class QuizView extends JFrame {
     public JButton getMainMenuButton() {
         return mainMenuButton;
     }
+    public void setController(HauptmenueController con) {
+        this.contr = con;
+    }
+
 }
