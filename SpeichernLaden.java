@@ -33,7 +33,7 @@ public class SpeichernLaden extends JFrame {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // Eingabeaufforderung für den Benutzer, um ein Verzeichnis zum Laden anzugeben
-                String verzeichnis = JOptionPane.showInputDialog("Verzeichnis zum Laden eingeben:");
+                String verzeichnis = JOptionPane.showInputDialog("Verzeichnis zum Ordner eingeben:");
                 ctrl.setVerzeichnis(verzeichnis); // Setzt das Verzeichnis im Hauptmenü-Controller
             }
         });
