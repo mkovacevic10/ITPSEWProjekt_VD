@@ -48,13 +48,6 @@ public class KarteikartenModel {
         loesungen.add(solution);
     }
 
-    // Fügt eine Lösung zur zuletzt hinzugefügten Karteikarte hinzu oder ersetzt sie
-    public void addSolutionToLastCard(String solution) {
-        if (!karteikarten.isEmpty()) {
-            loesungen.set(loesungen.size() - 1, solution);
-        }
-    }
-
     // Erhöht den Zähler für richtige Antworten
     public void incrementCorrect() {
         correctAnswers++;

@@ -4,7 +4,7 @@ import java.awt.event.ActionListener;
 
 public class KarteikartenView extends JFrame {
     private JLabel cardLabel, solutionLabel;
-    private JButton knowButton, nextButton, dontKnowButton, addButton, exitButton, solutionButton;
+    private JButton knowButton, nextButton, dontKnowButton, addButton, exitButton;
 
     public KarteikartenView() {
         setTitle("Karteikarten");
@@ -23,14 +23,12 @@ public class KarteikartenView extends JFrame {
         knowButton = new JButton("Weiß ich");
         nextButton = new JButton("Nächster Begriff");
         dontKnowButton = new JButton("Weiß ich nicht");
-        solutionButton = new JButton("Lösung hinzufügen");
         exitButton = new JButton("Beenden");
         addButton = new JButton("Karteikarten hinzufügen");
 
         mainButtonPanel.add(knowButton);
         mainButtonPanel.add(nextButton);
         mainButtonPanel.add(dontKnowButton);
-        mainButtonPanel.add(solutionButton);
         mainButtonPanel.add(exitButton);
         mainButtonPanel.add(addButton);
 
@@ -68,9 +66,5 @@ public class KarteikartenView extends JFrame {
 
     public void addAddCardListener(ActionListener listener) {
         addButton.addActionListener(listener);
-    }
-
-    public void addSolutionListener(ActionListener listener) {
-        solutionButton.addActionListener(listener);
     }
 }

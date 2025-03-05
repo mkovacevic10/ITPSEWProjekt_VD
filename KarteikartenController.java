@@ -93,17 +93,6 @@ public class KarteikartenController {
             }
         });
 
-        // Listener für den "Lösung hinzufügen"-Button
-        view.addSolutionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                String solution = JOptionPane.showInputDialog(view, "Lösung für die letzte hinzugefügte Karteikarte eingeben:");
-                if (solution != null && !solution.isEmpty()) {
-                    model.addSolutionToLastCard(solution); // Lösung zur letzten Karteikarte hinzufügen
-                    JOptionPane.showMessageDialog(view, "Lösung hinzugefügt!");
-                }
-            }
-        });
-
         view.setVisible(true); // Die View anzeigen
     }
 
